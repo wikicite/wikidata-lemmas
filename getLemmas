@@ -1,0 +1,28 @@
+#!/bin/bash
+for i in {1..1500..50}; do
+    ids="L$i"
+    for ((j=1;j<50;j++)); do
+        ids+="|L$((i+j))"
+    done
+    curl \
+        --silent \
+        --data-urlencode action=wbgetentities \
+        --data-urlencode format=json \
+        --data-urlencode formatversion=2 \
+        --data-urlencode ids="$ids" \
+        --data-urlencode props=labels \
+        https://www.wikidata.org/w/api.php |
+        jq -r '
+          .entities |
+          .[] |
+          .id as $id |
+          .lemmas |
+          .[] |
+          (
+              $id + "\t" +
+              .language + "\t" +
+              .value
+          )
+          '
+    sleep 1
+done

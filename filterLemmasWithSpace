@@ -1,0 +1,6 @@
+#!/bin/bash
+while IFS=$'\t' read -r lid language lemma; do
+    if [[ $lemma = *' '* ]]; then
+        printf '%s\t%s\t%s\n' "$lid" "$language" "$lemma"
+    fi
+done
