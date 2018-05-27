@@ -1,5 +1,6 @@
 #!/bin/bash
-for i in {1..1500..50}; do
+# get entity data of first 2000 lexemes
+for i in {1..2000..50}; do
     ids="L$i"
     for ((j=1;j<50;j++)); do
         ids+="|L$((i+j))"
@@ -12,17 +13,6 @@ for i in {1..1500..50}; do
         --data-urlencode ids="$ids" \
         --data-urlencode props=labels \
         https://www.wikidata.org/w/api.php |
-        jq -r '
-          .entities |
-          .[] |
-          .id as $id |
-          .lemmas |
-          .[] |
-          (
-              $id + "\t" +
-              .language + "\t" +
-              .value
-          )
-          '
+        jq -c '.entities[]|select(.lemmas)'
     sleep 1
 done
