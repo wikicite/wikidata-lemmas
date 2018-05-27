@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "wikidata-cli": ">=5.0.0"
+  }
+}
