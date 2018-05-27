@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# This file is executed on startup at mybindr
+
+npm install wikidata-cli
