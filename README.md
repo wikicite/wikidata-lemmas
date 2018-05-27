@@ -4,6 +4,8 @@ Command line scripts for processing of [lexicographical data] from Wikidata.
 
 ## Usage examples
 
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/wikicite/wikidata-lemmas/master?filepath=notebook.ipynb)
+
 Which labels contain spaces?
 
 ```shell
