@@ -17,3 +17,14 @@ Which properties are used how frequently on lexemes and forms?
 $ make properties.tsv
 $ awk '{print $2}' properties.tsv | ./histogram
 ```
+
+The following extended processings requires to [install wikidata-cli].
+
+Which properties are used how frequently, with property labels:
+
+```
+$ make properties.tsv plabels.tsv
+$ awk '{print $2}' properties.tsv | sort | join plabels.tsv - | ./histogram
+```
+
+[install wikidata-cli]: https://www.npmjs.com/package/wikidata-cli#installation
