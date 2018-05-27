@@ -1,2 +1,0 @@
-#!/bin/bash
-awk -F $'\t' '$3 ~ / / {print}'

@@ -11,8 +11,8 @@ for i in {1..2000..50}; do
         --data-urlencode format=json \
         --data-urlencode formatversion=2 \
         --data-urlencode ids="$ids" \
-        --data-urlencode props=labels \
-        https://www.wikidata.org/w/api.php |
-        jq -c '.entities[]|select(.lemmas)'
+        --data-urlencode props="labels|claims" \
+        https://www.wikidata.org/w/api.php | \
+        jq -c '.entities[]|select(.missing|not)'
     sleep 1
 done
