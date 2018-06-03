@@ -1,6 +1,8 @@
 #!/bin/bash
-# get entity data of first 2000 lexemes
-for i in {1..2000..50}; do
+# get entity data of first 2000 lexemes (or any other sequence)
+START=${1:-1}
+END=${2:-2230}
+for i in $(eval echo "{$START..$END..50}"); do
     ids="L$i"
     for ((j=1;j<50;j++)); do
         ids+="|L$((i+j))"
