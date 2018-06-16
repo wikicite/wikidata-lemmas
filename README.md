@@ -20,6 +20,12 @@ $ make properties.tsv
 $ awk '{print $2}' properties.tsv | ./histogram
 ```
 
+Which language codes are used how often?
+
+```
+$ make languages.tsv
+```
+
 The following extended processings requires to [install wikidata-cli].
 
 Which properties are used how frequently, with property labels:
